@@ -33,7 +33,7 @@
     if ([[[UIDevice currentDevice]systemVersion]floatValue] >= 7.0)
     {
         [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(124,252,0,0.7)];
-        //[[UINavigationBar appearance] setTranslucent:NO];
+        
     }else{
     
         [[UINavigationBar appearance] setTintColor:UIColorFromRGB(124,252,0,0.7)];
