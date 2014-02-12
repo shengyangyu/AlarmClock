@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>06160149-72F4-4AB8-9502-2E4D78CFCE5E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>AlarmClock</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>021B0CDF-DDD2-430D-9B49-F4B25B76EE0B</key>
+		<string>https://github.com/shengyangyu/AlarmClock.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>AlarmClock.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>021B0CDF-DDD2-430D-9B49-F4B25B76EE0B</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/shengyangyu/AlarmClock.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>021B0CDF-DDD2-430D-9B49-F4B25B76EE0B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>021B0CDF-DDD2-430D-9B49-F4B25B76EE0B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AlarmClock</string>
+		</dict>
+	</array>
+</dict>
+</plist>

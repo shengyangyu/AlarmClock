@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0606B03918ABB97000E3D5A3 /* ACSetAlarmVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0606B03718ABB97000E3D5A3 /* ACSetAlarmVC.m */; };
+		0606B03A18ABB97000E3D5A3 /* ACSetAlarmVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0606B03818ABB97000E3D5A3 /* ACSetAlarmVC.xib */; };
 		07371DB418AB0C6F004A23E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07371DB318AB0C6F004A23E5 /* Foundation.framework */; };
 		07371DB618AB0C6F004A23E5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07371DB518AB0C6F004A23E5 /* CoreGraphics.framework */; };
 		07371DB818AB0C6F004A23E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07371DB718AB0C6F004A23E5 /* UIKit.framework */; };
@@ -43,6 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0606B03618ABB97000E3D5A3 /* ACSetAlarmVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACSetAlarmVC.h; sourceTree = "<group>"; };
+		0606B03718ABB97000E3D5A3 /* ACSetAlarmVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACSetAlarmVC.m; sourceTree = "<group>"; };
+		0606B03818ABB97000E3D5A3 /* ACSetAlarmVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ACSetAlarmVC.xib; sourceTree = "<group>"; };
 		07371DB018AB0C6F004A23E5 /* AlarmClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlarmClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07371DB318AB0C6F004A23E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		07371DB518AB0C6F004A23E5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -135,6 +140,9 @@
 				07371DE218AB0CF6004A23E5 /* ACMainViewController.h */,
 				07371DE318AB0CF6004A23E5 /* ACMainViewController.m */,
 				07371DE418AB0CF6004A23E5 /* ACMainViewController.xib */,
+				0606B03618ABB97000E3D5A3 /* ACSetAlarmVC.h */,
+				0606B03718ABB97000E3D5A3 /* ACSetAlarmVC.m */,
+				0606B03818ABB97000E3D5A3 /* ACSetAlarmVC.xib */,
 				07371DC518AB0C6F004A23E5 /* Images.xcassets */,
 				07371DBA18AB0C6F004A23E5 /* Supporting Files */,
 			);
@@ -275,6 +283,7 @@
 				07371DFA18AB130D004A23E5 /* Icon.png in Resources */,
 				07371DF418AB130D004A23E5 /* 128.png in Resources */,
 				07371DF818AB130D004A23E5 /* Icon-Small.png in Resources */,
+				0606B03A18ABB97000E3D5A3 /* ACSetAlarmVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +305,7 @@
 				07371DE518AB0CF6004A23E5 /* ACMainViewController.m in Sources */,
 				07371DC418AB0C6F004A23E5 /* ACAppDelegate.m in Sources */,
 				07371DC018AB0C6F004A23E5 /* main.m in Sources */,
+				0606B03918ABB97000E3D5A3 /* ACSetAlarmVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
