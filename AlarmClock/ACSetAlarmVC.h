@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ACSetAlarmVC : UIViewController
+@interface ACSetAlarmVC : UIViewController<UITableViewDataSource,UITableViewDelegate>
+
+@property (strong, nonatomic) IBOutlet UITableView *alarmTable;
+
 
 @end

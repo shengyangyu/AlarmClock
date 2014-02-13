@@ -7,6 +7,8 @@
 //
 
 #import "ACSetAlarmVC.h"
+#import "ACAlarmTableCell.h"
+#import "ACEditorAlarmVC.h"
 
 @interface ACSetAlarmVC ()
 
@@ -29,7 +31,47 @@
     // Do any additional setup after loading the view from its nib.
     self.title = @"set alarm";
     self.navigationController.navigationBar.translucent = NO;
+    // rightbuttom add new alarm
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAlarmMethod)];
+    
+}
+#pragma mark - tableview delegate
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString* cellIdentifier = @"ACAlarmTableCell";
+    ACAlarmTableCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil)
+    {
+        NSArray *cellArray = [[NSBundle mainBundle] loadNibNamed:@"ACAlarmTableCell" owner:self options:nil];
+        cell = [cellArray objectAtIndex:0];
+        //cell.selectionStyle = 0;
+    }
+    
+    cell.alarmTimeLabel.text = @"08:00";
+    cell.loopDayLabel.text = @"周一,周二,周三,周四,周五,周六";
+    
+    return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self editorAlarmMethod:@{@"title":@"editor Alarm"}];
+}
+#pragma mark -addAlarmMeth
+- (void)addAlarmMethod
+{
+    [self editorAlarmMethod:@{@"title":@"add Alarm"}];
+}
 
+- (void)editorAlarmMethod:(NSDictionary *)passdata
+{
+    ACEditorAlarmVC *vc = [[ACEditorAlarmVC alloc] initWithNibName:@"ACEditorAlarmVC" bundle:nil];
+    vc.dataDic = passdata;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
