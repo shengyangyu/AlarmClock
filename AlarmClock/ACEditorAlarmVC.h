@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ACEditorAlarmVC : UIViewController
+@interface ACEditorAlarmVC : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong)NSDictionary *dataDic;
 
