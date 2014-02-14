@@ -59,12 +59,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self editorAlarmMethod:@{@"title":@"editor Alarm"}];
+    [self editorAlarmMethod:@{@"title":@"editor Alarm",@"type":@"3"}];
 }
 #pragma mark -addAlarmMeth
 - (void)addAlarmMethod
 {
-    [self editorAlarmMethod:@{@"title":@"add Alarm"}];
+    [self editorAlarmMethod:@{@"title":@"add Alarm",@"type":@"2"}];
 }
 
 - (void)editorAlarmMethod:(NSDictionary *)passdata

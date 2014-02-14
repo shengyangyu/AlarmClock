@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ACEditorAlarmVC : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface ACEditorAlarmVC : UIViewController<UITextFieldDelegate>
 
 @property (nonatomic, strong)NSDictionary *dataDic;
+
+@property (strong, nonatomic) IBOutlet UIView *buttomView;
+
+@property (strong, nonatomic) IBOutlet UIScrollView *centerScrollView;
+
+@property (strong, nonatomic) IBOutlet UITextField *tagTextField;
 
 @end
