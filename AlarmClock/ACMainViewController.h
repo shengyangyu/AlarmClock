@@ -11,7 +11,11 @@
 @interface ACMainViewController : UIViewController
 
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
+// time ex: 09:00
 @property (strong, nonatomic) IBOutlet UILabel *timeLabel;
+// dat  ex: 2014-02-14 ..
 @property (strong, nonatomic) IBOutlet UILabel *dayLabel;
+// seconds ex: :02
+@property (strong, nonatomic) IBOutlet UILabel *secLabel;
 
 @end

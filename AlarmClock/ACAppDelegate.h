@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class AlarmClock;
 
 @interface ACAppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -19,7 +20,17 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 - (void)saveContext;
+
 - (NSURL *)applicationDocumentsDirectory;
+
+// insertCoreData
+- (BOOL)insertCoreData:(NSDictionary *)dataDic;
+
+// queryCoreData
+- (NSMutableArray *)dataFetchRequest;
+
+// create class
+- (AlarmClock *)createAlarmClass;
 
 
 @end

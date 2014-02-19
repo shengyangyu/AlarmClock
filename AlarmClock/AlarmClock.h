@@ -19,4 +19,5 @@
 @property (nonatomic, retain) NSNumber * shankerBool;
 @property (nonatomic, retain) NSString * tagStr;
 
+
 @end

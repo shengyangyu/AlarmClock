@@ -9,12 +9,17 @@
 #import "ACSetAlarmVC.h"
 #import "ACAlarmTableCell.h"
 #import "ACEditorAlarmVC.h"
+#import "ACAppDelegate.h"
 
 @interface ACSetAlarmVC ()
+
+// local alarm clock data array
+@property (nonatomic, strong)NSMutableArray *dataArray;
 
 @end
 
 @implementation ACSetAlarmVC
+@synthesize dataArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,12 +38,16 @@
     self.navigationController.navigationBar.translucent = NO;
     // rightbuttom add new alarm
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAlarmMethod)];
+    // query data local
+    dataArray = [NSMutableArray array];
+    ACAppDelegate *del = [[UIApplication sharedApplication] delegate];
+    [dataArray addObjectsFromArray:[del dataFetchRequest]];
     
 }
 #pragma mark - tableview delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return [dataArray count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -59,12 +68,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self editorAlarmMethod:@{@"title":@"editor Alarm",@"type":@"3"}];
+    [self editorAlarmMethod:@{@"title":@"editor Alarm",@"type":@"3",@"data":dataArray[indexPath.row]}];
 }
 #pragma mark -addAlarmMeth
 - (void)addAlarmMethod
 {
-    [self editorAlarmMethod:@{@"title":@"add Alarm",@"type":@"2"}];
+    [self editorAlarmMethod:@{@"title":@"add Alarm",@"type":@"2",@"data":@""}];
 }
 
 - (void)editorAlarmMethod:(NSDictionary *)passdata

@@ -53,6 +53,10 @@
     otherFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
     [otherFormatter setDateFormat:@"yyyy-MM-d EEEE"];
     self.dayLabel.text = [otherFormatter stringFromDate:[NSDate date]];
+    // current systime sec
+    __block NSDateFormatter *secFormatter = [[NSDateFormatter alloc] init];
+    [secFormatter setDateFormat:@"ss"];
+    self.secLabel.text = [secFormatter stringFromDate:[NSDate date]];
     // timer change label
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
@@ -76,6 +80,8 @@
                 if (![self.dayLabel.text isEqualToString:[otherFormatter stringFromDate:[NSDate date]]]) {
                     self.dayLabel.text = [otherFormatter stringFromDate:[NSDate date]];
                 }
+                // sec
+                self.secLabel.text = [secFormatter stringFromDate:[NSDate date]];
             });
         }
     });  

@@ -52,8 +52,6 @@
     
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:UIColorFromRGB(240,255,255,1), NSForegroundColorAttributeName,shadow, NSShadowAttributeName,[UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:21.0], NSFontAttributeName, nil]];
     
-    [self insertCoreData];
-    [self dataFetchRequest];
     return YES;
 }
 
@@ -180,22 +178,36 @@
 }
 
 #pragma mark - insertCoreData
-- (void)insertCoreData
+- (BOOL)insertCoreData:(NSDictionary *)dataDic
 {
     NSManagedObjectContext *context = [self managedObjectContext];
     
     AlarmClock *alarmClockInfo = [NSEntityDescription insertNewObjectForEntityForName:@"AlarmClock" inManagedObjectContext:context];
-    alarmClockInfo.tagStr = @"name B";
-    
+    [self dataTransMethod:dataDic toClass:alarmClockInfo];
     NSError *error;
     if(![context save:&error])
     {
         NSLog(@"不能保存：%@",[error localizedDescription]);
+        return NO;
+    }
+    return YES;
+}
+#pragma mark -set alarm struct data
+- (void)dataTransMethod:(NSDictionary *)data toClass:(AlarmClock *)classStruct
+{
+    if (data != nil) {
+        classStruct.startBool = [data objectForKey:@"startBool"];
+        classStruct.timeStr = [data objectForKey:@"timeStr"];
+        classStruct.loopStr = [data objectForKey:@"loopStr"];
+        classStruct.ringStr = [data objectForKey:@"ringStr"];
+        classStruct.shankerBool = [data objectForKey:@"shankerBool"];
+        classStruct.tagStr = [data objectForKey:@"tagStr"];
     }
 }
 #pragma mark - queryCoreData
-- (void)dataFetchRequest
+- (NSMutableArray *)dataFetchRequest
 {
+    NSMutableArray *dataArray = [[NSMutableArray alloc] init];
     NSManagedObjectContext *context = [self managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"AlarmClock" inManagedObjectContext:context];
@@ -204,11 +216,25 @@
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
     for (AlarmClock *info in fetchedObjects) {
         NSLog(@"tagStr:%@", info.tagStr);
+        [dataArray addObject:info];
     }
+    return dataArray;
 }
 #pragma mark - deleteCoreData
 - (void)deleteCoreData
 {
     
 }
+
+#pragma mark -create class
+- (AlarmClock *)createAlarmClass
+{
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    AlarmClock *alarmClockInfo = [NSEntityDescription insertNewObjectForEntityForName:@"AlarmClock" inManagedObjectContext:context];
+    
+    return alarmClockInfo;
+}
+
+
 @end
