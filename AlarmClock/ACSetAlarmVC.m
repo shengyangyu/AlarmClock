@@ -38,12 +38,18 @@
     self.navigationController.navigationBar.translucent = NO;
     // rightbuttom add new alarm
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAlarmMethod)];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
     // query data local
     dataArray = [NSMutableArray array];
     ACAppDelegate *del = [[UIApplication sharedApplication] delegate];
     [dataArray addObjectsFromArray:[del dataFetchRequest]];
-    
 }
+
 #pragma mark - tableview delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

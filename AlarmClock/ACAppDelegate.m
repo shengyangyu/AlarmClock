@@ -231,7 +231,9 @@
 {
     NSManagedObjectContext *context = [self managedObjectContext];
     
-    AlarmClock *alarmClockInfo = [NSEntityDescription insertNewObjectForEntityForName:@"AlarmClock" inManagedObjectContext:context];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"AlarmClock" inManagedObjectContext:context];
+    NSManagedObject *obj = [[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:context];
+    AlarmClock *alarmClockInfo = (AlarmClock *)obj;
     
     return alarmClockInfo;
 }
