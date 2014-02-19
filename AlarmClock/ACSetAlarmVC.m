@@ -48,6 +48,8 @@
     dataArray = [NSMutableArray array];
     ACAppDelegate *del = [[UIApplication sharedApplication] delegate];
     [dataArray addObjectsFromArray:[del dataFetchRequest]];
+    // table reload
+    [self.alarmTable reloadData];
 }
 
 #pragma mark - tableview delegate

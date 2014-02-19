@@ -177,21 +177,6 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
-#pragma mark - insertCoreData
-- (BOOL)insertCoreData:(NSDictionary *)dataDic
-{
-    NSManagedObjectContext *context = [self managedObjectContext];
-    
-    AlarmClock *alarmClockInfo = [NSEntityDescription insertNewObjectForEntityForName:@"AlarmClock" inManagedObjectContext:context];
-    [self dataTransMethod:dataDic toClass:alarmClockInfo];
-    NSError *error;
-    if(![context save:&error])
-    {
-        NSLog(@"不能保存：%@",[error localizedDescription]);
-        return NO;
-    }
-    return YES;
-}
 #pragma mark -set alarm struct data
 - (void)dataTransMethod:(NSDictionary *)data toClass:(AlarmClock *)classStruct
 {
@@ -209,23 +194,47 @@
 {
     NSMutableArray *dataArray = [[NSMutableArray alloc] init];
     NSManagedObjectContext *context = [self managedObjectContext];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"AlarmClock" inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"AlarmClock"];
+    // fetchRequest.predicate = [NSPredicate predicateWithFormat:@"fid==3"];
     NSError *error;
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
     for (AlarmClock *info in fetchedObjects) {
-        NSLog(@"tagStr:%@", info.tagStr);
         [dataArray addObject:info];
     }
     return dataArray;
 }
-#pragma mark - deleteCoreData
-- (void)deleteCoreData
+#pragma mark - delete CoreData object
+- (void)deleteCoreData:(AlarmClock *)dataObj
 {
-    
+    NSManagedObjectContext *context = [self managedObjectContext];
+    [context deleteObject:(NSManagedObject *)dataObj];
 }
-
+#pragma mark - save coredata object
+- (void)saveCoreData
+{
+    NSManagedObjectContext *context = [self managedObjectContext];
+    NSError *error;
+    if(![context save:&error])
+    {
+        NSLog(@"不能保存：%@",[error localizedDescription]);
+    }
+}
+#pragma mark - insertCoreData
+- (BOOL)insertCoreData:(NSDictionary *)dataDic
+{
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    AlarmClock *alarmClockInfo = [NSEntityDescription insertNewObjectForEntityForName:@"AlarmClock" inManagedObjectContext:context];
+    [self dataTransMethod:dataDic toClass:alarmClockInfo];
+    alarmClockInfo.tagStr = @"yyy";
+    NSError *error;
+    if(![context save:&error])
+    {
+        NSLog(@"不能保存：%@",[error localizedDescription]);
+        return NO;
+    }
+    return YES;
+}
 #pragma mark -create class
 - (AlarmClock *)createAlarmClass
 {

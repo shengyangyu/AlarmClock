@@ -44,6 +44,14 @@
     [self setDataMethod];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:YES];
+    ACAppDelegate *del = [[UIApplication sharedApplication] delegate];
+    [del deleteCoreData:editorData];
+
+}
+
 #pragma mark -ACButtomView delegate
 - (void)choiceBtnMethod:(NSInteger)btnIndex
 {
@@ -64,10 +72,7 @@
             {
                 NSDictionary *dataDic12 = @{@"startBool":editorData.startBool,@"timeStr":editorData.timeStr,@"loopStr":editorData.loopStr,@"ringStr":editorData.ringStr,@"shankerBool":editorData.shankerBool,@"tagStr":editorData.tagStr};
                 ACAppDelegate *del = [[UIApplication sharedApplication] delegate];
-                if ([del insertCoreData:dataDic12])
-                {
-                    NSLog(@"cheng gong");
-                }
+                
             }
             
             break;
