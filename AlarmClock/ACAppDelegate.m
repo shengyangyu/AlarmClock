@@ -9,6 +9,7 @@
 #import "ACAppDelegate.h"
 #import "ACMainViewController.h"
 #import "AlarmClock.h"
+#import "ACCommon.h"
 
 #define UIColorFromRGB(r,g,b,a) [UIColor colorWithRed:(float)(r)/255.0 green:(float)(g)/255.0 blue:(float)(b)/255.0 alpha:a]
 
@@ -82,22 +83,10 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     [self saveContext];
 }
-- (void)saveContext
-{
-    NSError *error = nil;
-    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
-    if (managedObjectContext != nil) {
-        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
-    }
-}
+
+#pragma mark -core data manager
 
 #pragma mark - Core Data stack
-
 // Returns the managed object context for the application.
 // If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
 - (NSManagedObjectContext *)managedObjectContext
@@ -177,19 +166,37 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
-#pragma mark -set alarm struct data
-- (void)dataTransMethod:(NSDictionary *)data toClass:(AlarmClock *)classStruct
+
+#pragma mark -create class
+- (AlarmClock *)createAlarmClass
 {
-    if (data != nil) {
-        classStruct.startBool = [data objectForKey:@"startBool"];
-        classStruct.timeStr = [data objectForKey:@"timeStr"];
-        classStruct.loopStr = [data objectForKey:@"loopStr"];
-        classStruct.ringStr = [data objectForKey:@"ringStr"];
-        classStruct.shankerBool = [data objectForKey:@"shankerBool"];
-        classStruct.tagStr = [data objectForKey:@"tagStr"];
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"AlarmClock" inManagedObjectContext:context];
+    NSManagedObject *obj = [[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:context];
+    AlarmClock *alarmClockInfo = (AlarmClock *)obj;
+    return alarmClockInfo;
+}
+
+#pragma mark - saveContext
+- (void)saveContext
+{
+    NSError *error = nil;
+    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
+    if (managedObjectContext != nil) {
+        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
+            // Replace this implementation with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }else if ([managedObjectContext save:&error]) {
+            NSLog(@"saveContext:success!");
+        }
     }
 }
-#pragma mark - queryCoreData
+
+
+#pragma mark - queryCoreData query all data
 - (NSMutableArray *)dataFetchRequest
 {
     NSMutableArray *dataArray = [[NSMutableArray alloc] init];
@@ -203,49 +210,53 @@
     }
     return dataArray;
 }
+
 #pragma mark - delete CoreData object
 - (void)deleteCoreData:(AlarmClock *)dataObj
 {
     NSManagedObjectContext *context = [self managedObjectContext];
     [context deleteObject:(NSManagedObject *)dataObj];
 }
-#pragma mark - save coredata object
-- (void)saveCoreData
-{
-    NSManagedObjectContext *context = [self managedObjectContext];
-    NSError *error;
-    if(![context save:&error])
-    {
-        NSLog(@"不能保存：%@",[error localizedDescription]);
-    }
-}
+
 #pragma mark - insertCoreData
 - (BOOL)insertCoreData:(NSDictionary *)dataDic
 {
     NSManagedObjectContext *context = [self managedObjectContext];
     
-    AlarmClock *alarmClockInfo = [NSEntityDescription insertNewObjectForEntityForName:@"AlarmClock" inManagedObjectContext:context];
-    [self dataTransMethod:dataDic toClass:alarmClockInfo];
-    alarmClockInfo.tagStr = @"yyy";
+    AlarmClock *alarmClockInfo = [NSEntityDescription
+                                  insertNewObjectForEntityForName:@"AlarmClock"
+                                  inManagedObjectContext:context];
+    
+    [ACCommon dataTransMethod:dataDic toClass:alarmClockInfo];
     NSError *error;
-    if(![context save:&error])
+    if([context save:&error])
     {
-        NSLog(@"不能保存：%@",[error localizedDescription]);
+        NSLog(@"insertCoreData:success!");
         return NO;
     }
     return YES;
 }
-#pragma mark -create class
-- (AlarmClock *)createAlarmClass
+
+#pragma mark - update coredata
+- (void)updateData:(NSNumber *)alarmId withChangeData:(NSMutableDictionary *)lastData
 {
     NSManagedObjectContext *context = [self managedObjectContext];
+    NSPredicate *predicate = [NSPredicate
+                              predicateWithFormat:@"alarmId == %llu",[alarmId longLongValue]];
+    NSFetchRequest * request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription
+                        entityForName:@"AlarmClock"
+                        inManagedObjectContext:context]];
+    [request setPredicate:predicate];
+    NSError *error = nil;
+    NSArray *resultArray = [context executeFetchRequest:request error:&error];
     
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"AlarmClock" inManagedObjectContext:context];
-    NSManagedObject *obj = [[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:context];
-    AlarmClock *alarmClockInfo = (AlarmClock *)obj;
-    
-    return alarmClockInfo;
+    for (AlarmClock *info in resultArray) {
+        [ACCommon dictionaryclassTrans:lastData withClass:info];
+    }
+    if ([context save:&error]) {
+        NSLog(@"updateData:success!");
+    }
 }
-
 
 @end

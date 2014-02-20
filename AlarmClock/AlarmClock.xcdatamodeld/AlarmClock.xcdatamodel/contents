@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13A603" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3396" systemVersion="12E55" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="AlarmClock" representedClassName="AlarmClock" syncable="YES">
+        <attribute name="alarmId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="loopStr" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ringStr" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="shankerBool" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -9,6 +10,6 @@
         <attribute name="timeStr" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="AlarmClock" positionX="160" positionY="192" width="128" height="135"/>
+        <element name="AlarmClock" positionX="160" positionY="192" width="128" height="148"/>
     </elements>
 </model>

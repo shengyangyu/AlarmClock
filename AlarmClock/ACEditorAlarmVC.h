@@ -20,7 +20,7 @@
 // tag textfield can input
 @property (strong, nonatomic) IBOutlet UITextField *tagTextField;
 // current editor data
-@property (nonatomic, strong) AlarmClock *editorData;
+@property (nonatomic, strong) AlarmClock *editorClass;
 // check data completion
 - (BOOL)checkDataCompletion;
 

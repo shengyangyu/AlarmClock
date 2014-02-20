@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *alarmTimeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *loopDayLabel;
+@property (strong, nonatomic) IBOutlet UILabel *tagLabel;
 
 
 @end

@@ -10,16 +10,19 @@
 #import "ACButtomView.h"
 #import "ACAppDelegate.h"
 #import "AlarmClock.h"
+#import "ACCommon.h"
 
 @interface ACEditorAlarmVC ()<ACButtomViewDelegate>
 
-
+// class struct to data dictionary
+@property (nonatomic, strong) NSMutableDictionary *classDic;
 
 @end
 
 @implementation ACEditorAlarmVC
-@synthesize editorData;
+@synthesize editorClass;
 @synthesize dataDic;
+@synthesize classDic;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,9 +50,6 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:YES];
-    ACAppDelegate *del = [[UIApplication sharedApplication] delegate];
-    [del deleteCoreData:editorData];
-
 }
 
 #pragma mark -ACButtomView delegate
@@ -61,18 +61,30 @@
         case 0:
         {
             NSLog(@"取消");
+            [self.navigationController popViewControllerAnimated:YES];
             break;
         }
             // 确定
         case 1:
         {
-            
+            NSLog(@"确定");
             // save data to sqlite
             if ([self checkDataCompletion])
             {
-                NSDictionary *dataDic12 = @{@"startBool":editorData.startBool,@"timeStr":editorData.timeStr,@"loopStr":editorData.loopStr,@"ringStr":editorData.ringStr,@"shankerBool":editorData.shankerBool,@"tagStr":editorData.tagStr};
-                ACAppDelegate *del = [[UIApplication sharedApplication] delegate];
-                
+                // editor when editor infomation just need trans class to dictionary
+                if ([[dataDic objectForKey:@"type"] integerValue] == 3) {
+                    
+                    ACAppDelegate *del = [[UIApplication sharedApplication] delegate];
+                    [del updateData:[classDic objectForKey:@"alarmId"] withChangeData:classDic];
+                }
+                // create
+                else
+                {
+                    // current nsdate to long long
+                    [classDic setValue:[NSNumber numberWithLongLong:[ACCommon getLongLongFromDateTime:[NSDate date]]] forKey:@"alarmId"];
+                    ACAppDelegate *del = [[UIApplication sharedApplication] delegate];
+                    [del insertCoreData:classDic];
+                }
             }
             
             break;
@@ -81,6 +93,12 @@
         case 2:
         {
             NSLog(@"删除");
+            // editor when editor infomation just need trans class to dictionary
+            if ([[dataDic objectForKey:@"type"] integerValue] == 3) {
+                
+                ACAppDelegate *del = [[UIApplication sharedApplication] delegate];
+                [del deleteCoreData:editorClass];
+            }
             break;
         }
         default:
@@ -98,35 +116,35 @@
         case 501:
         {
             NSLog(@"启用闹钟");
-            editorData.startBool = [NSNumber numberWithBool:YES];
+            [classDic setObject:[NSNumber numberWithBool:YES] forKey:@"startBool"];
             break;
         }
             // 时间
         case 502:
         {
             NSLog(@"时间");
-            editorData.timeStr = @"09:00";
+            [classDic setObject:@"09:00" forKey:@"timeStr"];
             break;
         }
             // 重复
         case 503:
         {
             NSLog(@"重复");
-            editorData.loopStr = @"12345";
+            [classDic setObject:@"12345" forKey:@"loopStr"];
             break;
         }
             // 铃声
         case 504:
         {
             NSLog(@"铃声");
-            editorData.ringStr = @"xiaomianyang";
+            [classDic setObject:@"xiaomianyang" forKey:@"ringStr"];
             break;
         }
             // 振动
         case 505:
         {
             NSLog(@"振动");
-            editorData.shankerBool = [NSNumber numberWithBool:YES];
+            [classDic setObject:[NSNumber numberWithBool:YES] forKey:@"shankerBool"];
             break;
         }
         default:
@@ -142,7 +160,7 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     if (textField.text.length != 0) {
-        editorData.tagStr = textField.text;
+        [classDic setObject:textField.text forKey:@"tagStr"];
     }
     [self.centerScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
@@ -160,27 +178,27 @@
 #pragma mark -check data completion
 - (BOOL)checkDataCompletion
 {
-    if (editorData.startBool == nil)
+    if ([classDic objectForKey:@"startBool"]  == nil)
     {
         NSLog(@"startBool nil");
         return NO;
-    }else if (editorData.timeStr == nil || editorData.timeStr.length == 0)
+    }else if ([classDic objectForKey:@"timeStr"] == nil)
     {
         NSLog(@"timeStr nil");
         return NO;
-    }else if (editorData.loopStr == nil || editorData.loopStr.length == 0)
+    }else if ([classDic objectForKey:@"loopStr"] == nil)
     {
         NSLog(@"loopStr nil");
         return NO;
-    }else if (editorData.ringStr == nil || editorData.ringStr.length == 0)
+    }else if ([classDic objectForKey:@"ringStr"] == nil)
     {
         NSLog(@"ringStr nil");
         return NO;
-    }else if (editorData.shankerBool == nil)
+    }else if ([classDic objectForKey:@"shankerBool"] == nil)
     {
         NSLog(@"shankerBool nil");
         return NO;
-    }else if (editorData.tagStr == nil || editorData.tagStr.length == 0)
+    }else if ([classDic objectForKey:@"tagStr"] == nil)
     {
         NSLog(@"tagStr nil");
         return NO;
@@ -191,15 +209,15 @@
 #pragma mark -set data
 - (void)setDataMethod
 {
-    // editor
+    classDic = [NSMutableDictionary dictionary];
+    // editor when editor infomation just need trans class to dictionary
     if ([[dataDic objectForKey:@"type"] integerValue] == 3) {
-        editorData = [dataDic objectForKey:@"data"];
+        editorClass = [dataDic objectForKey:@"data"];
+        [ACCommon classTransDictionary:editorClass withDictionary:classDic];
     }
     // create
     else
     {
-        ACAppDelegate *del = [[UIApplication sharedApplication] delegate];
-        editorData = [del createAlarmClass];
     }
 }
 

@@ -10,6 +10,7 @@
 #import "ACAlarmTableCell.h"
 #import "ACEditorAlarmVC.h"
 #import "ACAppDelegate.h"
+#import "AlarmClock.h"
 
 @interface ACSetAlarmVC ()
 
@@ -67,9 +68,10 @@
         cell = [cellArray objectAtIndex:0];
         //cell.selectionStyle = 0;
     }
-    
-    cell.alarmTimeLabel.text = @"08:00";
-    cell.loopDayLabel.text = @"周一,周二,周三,周四,周五,周六";
+    AlarmClock *data = (AlarmClock *)[dataArray objectAtIndex:indexPath.row];
+    cell.alarmTimeLabel.text = data.timeStr;
+    cell.loopDayLabel.text = data.loopStr;
+    cell.tagLabel.text = data.tagStr;
     
     return cell;
 }

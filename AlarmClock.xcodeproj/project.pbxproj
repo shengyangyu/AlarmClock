@@ -39,7 +39,8 @@
 		078F2C9C18ADE5B200EC3036 /* ACButtomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 078F2C9B18ADE5B100EC3036 /* ACButtomView.m */; };
 		078F2CE018AE07DD00EC3036 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078F2CDF18AE07DD00EC3036 /* CoreData.framework */; };
 		078F2CE318AE093200EC3036 /* AlarmClock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 078F2CE118AE093200EC3036 /* AlarmClock.xcdatamodeld */; };
-		078F2CE618AE0D0300EC3036 /* AlarmClock.m in Sources */ = {isa = PBXBuildFile; fileRef = 078F2CE518AE0D0300EC3036 /* AlarmClock.m */; };
+		CE580AB918B59422002B9E84 /* AlarmClock.m in Sources */ = {isa = PBXBuildFile; fileRef = CE580AB818B59422002B9E84 /* AlarmClock.m */; };
+		CE580ABC18B59D2E002B9E84 /* ACCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = CE580ABB18B59D2E002B9E84 /* ACCommon.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,8 +95,10 @@
 		078F2C9B18ADE5B100EC3036 /* ACButtomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACButtomView.m; sourceTree = "<group>"; };
 		078F2CDF18AE07DD00EC3036 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		078F2CE218AE093200EC3036 /* AlarmClock.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AlarmClock.xcdatamodel; sourceTree = "<group>"; };
-		078F2CE418AE0D0300EC3036 /* AlarmClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmClock.h; sourceTree = "<group>"; };
-		078F2CE518AE0D0300EC3036 /* AlarmClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmClock.m; sourceTree = "<group>"; };
+		CE580AB718B59422002B9E84 /* AlarmClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmClock.h; sourceTree = "<group>"; };
+		CE580AB818B59422002B9E84 /* AlarmClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmClock.m; sourceTree = "<group>"; };
+		CE580ABA18B59D2E002B9E84 /* ACCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACCommon.h; sourceTree = "<group>"; };
+		CE580ABB18B59D2E002B9E84 /* ACCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACCommon.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +160,8 @@
 		07371DB918AB0C6F004A23E5 /* AlarmClock */ = {
 			isa = PBXGroup;
 			children = (
+				CE580ABA18B59D2E002B9E84 /* ACCommon.h */,
+				CE580ABB18B59D2E002B9E84 /* ACCommon.m */,
 				07371DC218AB0C6F004A23E5 /* ACAppDelegate.h */,
 				07371DC318AB0C6F004A23E5 /* ACAppDelegate.m */,
 				07371DE218AB0CF6004A23E5 /* ACMainViewController.h */,
@@ -173,8 +178,8 @@
 				0746A92E18ACC79C007DC6F4 /* ACAlarmTableCell.h */,
 				0746A92F18ACC79C007DC6F4 /* ACAlarmTableCell.m */,
 				0746A93118ACC7B5007DC6F4 /* ACAlarmTableCell.xib */,
-				078F2CE418AE0D0300EC3036 /* AlarmClock.h */,
-				078F2CE518AE0D0300EC3036 /* AlarmClock.m */,
+				CE580AB718B59422002B9E84 /* AlarmClock.h */,
+				CE580AB818B59422002B9E84 /* AlarmClock.m */,
 				078F2CE118AE093200EC3036 /* AlarmClock.xcdatamodeld */,
 				07371DC518AB0C6F004A23E5 /* Images.xcassets */,
 				07371DBA18AB0C6F004A23E5 /* Supporting Files */,
@@ -343,8 +348,9 @@
 				07371DC418AB0C6F004A23E5 /* ACAppDelegate.m in Sources */,
 				078F2C9C18ADE5B200EC3036 /* ACButtomView.m in Sources */,
 				07371DC018AB0C6F004A23E5 /* main.m in Sources */,
+				CE580ABC18B59D2E002B9E84 /* ACCommon.m in Sources */,
 				0606B03918ABB97000E3D5A3 /* ACSetAlarmVC.m in Sources */,
-				078F2CE618AE0D0300EC3036 /* AlarmClock.m in Sources */,
+				CE580AB918B59422002B9E84 /* AlarmClock.m in Sources */,
 				0746A93618ACCFA1007DC6F4 /* ACEditorAlarmVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
