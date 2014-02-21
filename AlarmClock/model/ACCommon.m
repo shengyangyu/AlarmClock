@@ -65,6 +65,52 @@
     return totalMilliSeconds;
 }
 
+// start a location notification
++ (BOOL)startLocationNotification:(NSDictionary *)dicData
+{
+//    [[NSNotificationCenter defaultCenter] seta]
+    // location notification
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH:mm"];
+    // notification fire time
+    NSDate *now = [formatter dateFromString:@"17:30"];
+    notification.fireDate = now;
+    // notification timezone
+    notification.timeZone = [NSTimeZone defaultTimeZone];
+    // notification repeatInterval
+    notification.repeatInterval = NSCalendarUnitWeekday;
+    // notification alert title
+    notification.alertBody = @"这是一个新的通知";
+    // notification soundinfo
+    notification.soundName = UILocalNotificationDefaultSoundName;
+    // notification userinfo
+    NSDictionary *dic = @{@"key":@"name",Location_Notification_ID:[dicData objectForKey:Location_Notification_ID]};
+    notification.userInfo = dic;
+    // notification actions
+    notification.hasAction = YES;
+    notification.alertAction = @"sstttss";
+    // notification start
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    
+    return YES;
+}
 
+// cacel a location notification
++ (BOOL)cacelLocationNotification:(NSString *)identificationStr
+{
+    // get notification
+    UILocalNotification *notificationToCancel = nil;
+    for(UILocalNotification *aNotif in [[UIApplication sharedApplication] scheduledLocalNotifications])
+    {
+        if([aNotif.userInfo[Location_Notification_ID] isEqualToString:identificationStr])
+        {
+            notificationToCancel = aNotif;
+            [[UIApplication sharedApplication] cancelLocalNotification:notificationToCancel];
+            return YES;
+        }
+    }
+    return NO;
+}
 
 @end

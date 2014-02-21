@@ -10,27 +10,21 @@
 #import "ACMainViewController.h"
 #import "AlarmClock.h"
 #import "ACCommon.h"
+#import "ACCoreDataManager.h"
 
 #define UIColorFromRGB(r,g,b,a) [UIColor colorWithRed:(float)(r)/255.0 green:(float)(g)/255.0 blue:(float)(b)/255.0 alpha:a]
 
 
 @implementation ACAppDelegate
 
-@synthesize managedObjectContext = _managedObjectContext;
-@synthesize managedObjectModel = _managedObjectModel;
-@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    
     ACMainViewController *vc = [[ACMainViewController alloc] initWithNibName:@"ACMainViewController" bundle:nil];
-    
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-    
     self.window.rootViewController = nav;
-    
     self.window.backgroundColor = [UIColor whiteColor];
     
     [self.window makeKeyAndVisible];
@@ -39,19 +33,19 @@
     if ([[[UIDevice currentDevice]systemVersion]floatValue] >= 7.0)
     {
         [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(124,252,0,0.7)];
-        
     }else{
-    
         [[UINavigationBar appearance] setTintColor:UIColorFromRGB(124,252,0,0.7)];
     }
-    
     NSShadow *shadow = [[NSShadow alloc] init];
-    
     shadow.shadowColor = UIColorFromRGB(0,0,0,0.8);
-    
     shadow.shadowOffset = CGSizeMake(0, 1);
-    
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:UIColorFromRGB(240,255,255,1), NSForegroundColorAttributeName,shadow, NSShadowAttributeName,[UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:21.0], NSFontAttributeName, nil]];
+    
+    UILocalNotification * localNotify = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    if(localNotify)
+    {
+        NSLog(@"didFinishLaunchingWithOptions");
+    }
     
     return YES;
 }
@@ -81,182 +75,20 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    [self saveContext];
+    [[ACCoreDataManager sharedManager] saveContext];
 }
 
-#pragma mark -core data manager
-
-#pragma mark - Core Data stack
-// Returns the managed object context for the application.
-// If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
-- (NSManagedObjectContext *)managedObjectContext
+#pragma mark -notification recevice method
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
-    if (_managedObjectContext != nil) {
-        return _managedObjectContext;
-    }
-    
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (coordinator != nil) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
-        [_managedObjectContext setPersistentStoreCoordinator:coordinator];
-    }
-    return _managedObjectContext;
-}
-
-// Returns the managed object model for the application.
-// If the model doesn't already exist, it is created from the application's model.
-- (NSManagedObjectModel *)managedObjectModel
-{
-    if (_managedObjectModel != nil) {
-        return _managedObjectModel;
-    }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"AlarmClock" withExtension:@"momd"];
-    _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
-    return _managedObjectModel;
-}
-
-// Returns the persistent store coordinator for the application.
-// If the coordinator doesn't already exist, it is created and the application's store added to it.
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
-{
-    if (_persistentStoreCoordinator != nil) {
-        return _persistentStoreCoordinator;
-    }
-    
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"AlarmClock.sqlite"];
-    
-    NSError *error = nil;
-    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-         
-         Typical reasons for an error here include:
-         * The persistent store is not accessible;
-         * The schema for the persistent store is incompatible with current managed object model.
-         Check the error message to determine what the actual problem was.
-         
-         
-         If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
-         
-         If you encounter schema incompatibility errors during development, you can reduce their frequency by:
-         * Simply deleting the existing store:
-         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
-         
-         * Performing automatic lightweight migration by passing the following dictionary as the options parameter:
-         @{NSMigratePersistentStoresAutomaticallyOption:@YES, NSInferMappingModelAutomaticallyOption:@YES}
-         
-         Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
-         
-         */
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-    
-    return _persistentStoreCoordinator;
-}
-
-#pragma mark - Application's Documents directory
-
-// Returns the URL to the application's Documents directory.
-- (NSURL *)applicationDocumentsDirectory
-{
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-}
-
-
-#pragma mark -create class
-- (AlarmClock *)createAlarmClass
-{
-    NSManagedObjectContext *context = [self managedObjectContext];
-    
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"AlarmClock" inManagedObjectContext:context];
-    NSManagedObject *obj = [[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:context];
-    AlarmClock *alarmClockInfo = (AlarmClock *)obj;
-    return alarmClockInfo;
-}
-
-#pragma mark - saveContext
-- (void)saveContext
-{
-    NSError *error = nil;
-    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
-    if (managedObjectContext != nil) {
-        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }else if ([managedObjectContext save:&error]) {
-            NSLog(@"saveContext:success!");
-        }
+    if (notification) {
+        NSDictionary *userInfo =  notification.userInfo;
+        NSString *obj = userInfo[@"key"];
+        NSLog(@"%@",obj);
+//        UIAlertView *alert =  [[UIAlertView alloc] initWithTitle:nil message:@"received E-mail" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [alert show];
     }
 }
 
-
-#pragma mark - queryCoreData query all data
-- (NSMutableArray *)dataFetchRequest
-{
-    NSMutableArray *dataArray = [[NSMutableArray alloc] init];
-    NSManagedObjectContext *context = [self managedObjectContext];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"AlarmClock"];
-    // fetchRequest.predicate = [NSPredicate predicateWithFormat:@"fid==3"];
-    NSError *error;
-    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-    for (AlarmClock *info in fetchedObjects) {
-        [dataArray addObject:info];
-    }
-    return dataArray;
-}
-
-#pragma mark - delete CoreData object
-- (void)deleteCoreData:(AlarmClock *)dataObj
-{
-    NSManagedObjectContext *context = [self managedObjectContext];
-    [context deleteObject:(NSManagedObject *)dataObj];
-}
-
-#pragma mark - insertCoreData
-- (BOOL)insertCoreData:(NSDictionary *)dataDic
-{
-    NSManagedObjectContext *context = [self managedObjectContext];
-    
-    AlarmClock *alarmClockInfo = [NSEntityDescription
-                                  insertNewObjectForEntityForName:@"AlarmClock"
-                                  inManagedObjectContext:context];
-    
-    [ACCommon dataTransMethod:dataDic toClass:alarmClockInfo];
-    NSError *error;
-    if([context save:&error])
-    {
-        NSLog(@"insertCoreData:success!");
-        return NO;
-    }
-    return YES;
-}
-
-#pragma mark - update coredata
-- (void)updateData:(NSNumber *)alarmId withChangeData:(NSMutableDictionary *)lastData
-{
-    NSManagedObjectContext *context = [self managedObjectContext];
-    NSPredicate *predicate = [NSPredicate
-                              predicateWithFormat:@"alarmId == %llu",[alarmId longLongValue]];
-    NSFetchRequest * request = [[NSFetchRequest alloc] init];
-    [request setEntity:[NSEntityDescription
-                        entityForName:@"AlarmClock"
-                        inManagedObjectContext:context]];
-    [request setPredicate:predicate];
-    NSError *error = nil;
-    NSArray *resultArray = [context executeFetchRequest:request error:&error];
-    
-    for (AlarmClock *info in resultArray) {
-        [ACCommon dictionaryclassTrans:lastData withClass:info];
-    }
-    if ([context save:&error]) {
-        NSLog(@"updateData:success!");
-    }
-}
 
 @end

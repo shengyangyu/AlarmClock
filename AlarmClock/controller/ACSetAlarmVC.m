@@ -9,7 +9,7 @@
 #import "ACSetAlarmVC.h"
 #import "ACAlarmTableCell.h"
 #import "ACEditorAlarmVC.h"
-#import "ACAppDelegate.h"
+#import "ACCoreDataManager.h"
 #import "AlarmClock.h"
 
 @interface ACSetAlarmVC ()
@@ -47,8 +47,7 @@
     [super viewWillAppear:YES];
     // query data local
     dataArray = [NSMutableArray array];
-    ACAppDelegate *del = [[UIApplication sharedApplication] delegate];
-    [dataArray addObjectsFromArray:[del dataFetchRequest]];
+    [dataArray addObjectsFromArray:[[ACCoreDataManager sharedManager] dataFetchRequest]];
     // table reload
     [self.alarmTable reloadData];
 }

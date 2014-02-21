@@ -8,7 +8,7 @@
 
 #import "ACEditorAlarmVC.h"
 #import "ACButtomView.h"
-#import "ACAppDelegate.h"
+#import "ACCoreDataManager.h"
 #import "AlarmClock.h"
 #import "ACCommon.h"
 
@@ -45,6 +45,7 @@
     [self.buttomView addSubview:view];
     // set data
     [self setDataMethod];
+    [ACCommon startLocationNotification:@{Location_Notification_ID:@"yangge"}];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -74,16 +75,14 @@
                 // editor when editor infomation just need trans class to dictionary
                 if ([[dataDic objectForKey:@"type"] integerValue] == 3) {
                     
-                    ACAppDelegate *del = [[UIApplication sharedApplication] delegate];
-                    [del updateData:[classDic objectForKey:@"alarmId"] withChangeData:classDic];
+                    [[ACCoreDataManager sharedManager] updateData:[classDic objectForKey:@"alarmId"] withChangeData:classDic];
                 }
                 // create
                 else
                 {
                     // current nsdate to long long
                     [classDic setValue:[NSNumber numberWithLongLong:[ACCommon getLongLongFromDateTime:[NSDate date]]] forKey:@"alarmId"];
-                    ACAppDelegate *del = [[UIApplication sharedApplication] delegate];
-                    [del insertCoreData:classDic];
+                    [[ACCoreDataManager sharedManager] insertCoreData:classDic];
                 }
             }
             
@@ -96,8 +95,7 @@
             // editor when editor infomation just need trans class to dictionary
             if ([[dataDic objectForKey:@"type"] integerValue] == 3) {
                 
-                ACAppDelegate *del = [[UIApplication sharedApplication] delegate];
-                [del deleteCoreData:editorClass];
+                [[ACCoreDataManager sharedManager] deleteCoreData:editorClass];
             }
             break;
         }

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0606B03918ABB97000E3D5A3 /* ACSetAlarmVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0606B03718ABB97000E3D5A3 /* ACSetAlarmVC.m */; };
-		0606B03A18ABB97000E3D5A3 /* ACSetAlarmVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0606B03818ABB97000E3D5A3 /* ACSetAlarmVC.xib */; };
 		07371DB418AB0C6F004A23E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07371DB318AB0C6F004A23E5 /* Foundation.framework */; };
 		07371DB618AB0C6F004A23E5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07371DB518AB0C6F004A23E5 /* CoreGraphics.framework */; };
 		07371DB818AB0C6F004A23E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07371DB718AB0C6F004A23E5 /* UIKit.framework */; };
@@ -21,8 +19,6 @@
 		07371DCF18AB0C6F004A23E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07371DB718AB0C6F004A23E5 /* UIKit.framework */; };
 		07371DD718AB0C6F004A23E5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07371DD518AB0C6F004A23E5 /* InfoPlist.strings */; };
 		07371DD918AB0C6F004A23E5 /* AlarmClockTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 07371DD818AB0C6F004A23E5 /* AlarmClockTests.m */; };
-		07371DE518AB0CF6004A23E5 /* ACMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07371DE318AB0CF6004A23E5 /* ACMainViewController.m */; };
-		07371DE618AB0CF6004A23E5 /* ACMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07371DE418AB0CF6004A23E5 /* ACMainViewController.xib */; };
 		07371DF318AB130D004A23E5 /* 1024.png in Resources */ = {isa = PBXBuildFile; fileRef = 07371DEA18AB130D004A23E5 /* 1024.png */; };
 		07371DF418AB130D004A23E5 /* 128.png in Resources */ = {isa = PBXBuildFile; fileRef = 07371DEB18AB130D004A23E5 /* 128.png */; };
 		07371DF518AB130D004A23E5 /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 07371DEC18AB130D004A23E5 /* Icon-120.png */; };
@@ -32,15 +28,20 @@
 		07371DF918AB130D004A23E5 /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07371DF018AB130D004A23E5 /* Icon-Small@2x.png */; };
 		07371DFA18AB130D004A23E5 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 07371DF118AB130D004A23E5 /* Icon.png */; };
 		07371DFB18AB130D004A23E5 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 07371DF218AB130D004A23E5 /* Icon@2x.png */; };
-		0746A93018ACC79C007DC6F4 /* ACAlarmTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0746A92F18ACC79C007DC6F4 /* ACAlarmTableCell.m */; };
-		0746A93218ACC7B5007DC6F4 /* ACAlarmTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0746A93118ACC7B5007DC6F4 /* ACAlarmTableCell.xib */; };
-		0746A93618ACCFA1007DC6F4 /* ACEditorAlarmVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0746A93418ACCFA1007DC6F4 /* ACEditorAlarmVC.m */; };
-		0746A93718ACCFA1007DC6F4 /* ACEditorAlarmVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0746A93518ACCFA1007DC6F4 /* ACEditorAlarmVC.xib */; };
-		078F2C9C18ADE5B200EC3036 /* ACButtomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 078F2C9B18ADE5B100EC3036 /* ACButtomView.m */; };
 		078F2CE018AE07DD00EC3036 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 078F2CDF18AE07DD00EC3036 /* CoreData.framework */; };
 		078F2CE318AE093200EC3036 /* AlarmClock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 078F2CE118AE093200EC3036 /* AlarmClock.xcdatamodeld */; };
+		95B1B5BD18B71A9900373DD7 /* ACButtomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B1B5B418B71A9900373DD7 /* ACButtomView.m */; };
+		95B1B5BE18B71A9900373DD7 /* ACCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B1B5B618B71A9900373DD7 /* ACCommon.m */; };
+		95B1B5BF18B71A9900373DD7 /* ACCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B1B5B818B71A9900373DD7 /* ACCoreDataManager.m */; };
+		95B1B5CE18B71AED00373DD7 /* ACAlarmTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B1B5C318B71AED00373DD7 /* ACAlarmTableCell.m */; };
+		95B1B5CF18B71AED00373DD7 /* ACAlarmTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B1B5C418B71AED00373DD7 /* ACAlarmTableCell.xib */; };
+		95B1B5D018B71AED00373DD7 /* ACEditorAlarmVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B1B5C618B71AED00373DD7 /* ACEditorAlarmVC.m */; };
+		95B1B5D118B71AED00373DD7 /* ACEditorAlarmVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B1B5C718B71AED00373DD7 /* ACEditorAlarmVC.xib */; };
+		95B1B5D218B71AED00373DD7 /* ACMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B1B5C918B71AED00373DD7 /* ACMainViewController.m */; };
+		95B1B5D318B71AED00373DD7 /* ACMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B1B5CA18B71AED00373DD7 /* ACMainViewController.xib */; };
+		95B1B5D418B71AED00373DD7 /* ACSetAlarmVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B1B5CC18B71AED00373DD7 /* ACSetAlarmVC.m */; };
+		95B1B5D518B71AED00373DD7 /* ACSetAlarmVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B1B5CD18B71AED00373DD7 /* ACSetAlarmVC.xib */; };
 		CE580AB918B59422002B9E84 /* AlarmClock.m in Sources */ = {isa = PBXBuildFile; fileRef = CE580AB818B59422002B9E84 /* AlarmClock.m */; };
-		CE580ABC18B59D2E002B9E84 /* ACCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = CE580ABB18B59D2E002B9E84 /* ACCommon.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,9 +55,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0606B03618ABB97000E3D5A3 /* ACSetAlarmVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACSetAlarmVC.h; sourceTree = "<group>"; };
-		0606B03718ABB97000E3D5A3 /* ACSetAlarmVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACSetAlarmVC.m; sourceTree = "<group>"; };
-		0606B03818ABB97000E3D5A3 /* ACSetAlarmVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ACSetAlarmVC.xib; sourceTree = "<group>"; };
 		07371DB018AB0C6F004A23E5 /* AlarmClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlarmClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07371DB318AB0C6F004A23E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		07371DB518AB0C6F004A23E5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -73,9 +71,6 @@
 		07371DD418AB0C6F004A23E5 /* AlarmClockTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AlarmClockTests-Info.plist"; sourceTree = "<group>"; };
 		07371DD618AB0C6F004A23E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		07371DD818AB0C6F004A23E5 /* AlarmClockTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlarmClockTests.m; sourceTree = "<group>"; };
-		07371DE218AB0CF6004A23E5 /* ACMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACMainViewController.h; sourceTree = "<group>"; };
-		07371DE318AB0CF6004A23E5 /* ACMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACMainViewController.m; sourceTree = "<group>"; };
-		07371DE418AB0CF6004A23E5 /* ACMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ACMainViewController.xib; sourceTree = "<group>"; };
 		07371DEA18AB130D004A23E5 /* 1024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1024.png; sourceTree = "<group>"; };
 		07371DEB18AB130D004A23E5 /* 128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 128.png; sourceTree = "<group>"; };
 		07371DEC18AB130D004A23E5 /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
@@ -85,20 +80,28 @@
 		07371DF018AB130D004A23E5 /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		07371DF118AB130D004A23E5 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		07371DF218AB130D004A23E5 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
-		0746A92E18ACC79C007DC6F4 /* ACAlarmTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACAlarmTableCell.h; sourceTree = "<group>"; };
-		0746A92F18ACC79C007DC6F4 /* ACAlarmTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACAlarmTableCell.m; sourceTree = "<group>"; };
-		0746A93118ACC7B5007DC6F4 /* ACAlarmTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ACAlarmTableCell.xib; sourceTree = "<group>"; };
-		0746A93318ACCFA1007DC6F4 /* ACEditorAlarmVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACEditorAlarmVC.h; sourceTree = "<group>"; };
-		0746A93418ACCFA1007DC6F4 /* ACEditorAlarmVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACEditorAlarmVC.m; sourceTree = "<group>"; };
-		0746A93518ACCFA1007DC6F4 /* ACEditorAlarmVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ACEditorAlarmVC.xib; sourceTree = "<group>"; };
-		078F2C9A18ADE5B100EC3036 /* ACButtomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACButtomView.h; sourceTree = "<group>"; };
-		078F2C9B18ADE5B100EC3036 /* ACButtomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACButtomView.m; sourceTree = "<group>"; };
 		078F2CDF18AE07DD00EC3036 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		078F2CE218AE093200EC3036 /* AlarmClock.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AlarmClock.xcdatamodel; sourceTree = "<group>"; };
+		95B1B5B318B71A9900373DD7 /* ACButtomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACButtomView.h; sourceTree = "<group>"; };
+		95B1B5B418B71A9900373DD7 /* ACButtomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACButtomView.m; sourceTree = "<group>"; };
+		95B1B5B518B71A9900373DD7 /* ACCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACCommon.h; sourceTree = "<group>"; };
+		95B1B5B618B71A9900373DD7 /* ACCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACCommon.m; sourceTree = "<group>"; };
+		95B1B5B718B71A9900373DD7 /* ACCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACCoreDataManager.h; sourceTree = "<group>"; };
+		95B1B5B818B71A9900373DD7 /* ACCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACCoreDataManager.m; sourceTree = "<group>"; };
+		95B1B5C218B71AED00373DD7 /* ACAlarmTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACAlarmTableCell.h; sourceTree = "<group>"; };
+		95B1B5C318B71AED00373DD7 /* ACAlarmTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACAlarmTableCell.m; sourceTree = "<group>"; };
+		95B1B5C418B71AED00373DD7 /* ACAlarmTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ACAlarmTableCell.xib; sourceTree = "<group>"; };
+		95B1B5C518B71AED00373DD7 /* ACEditorAlarmVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACEditorAlarmVC.h; sourceTree = "<group>"; };
+		95B1B5C618B71AED00373DD7 /* ACEditorAlarmVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACEditorAlarmVC.m; sourceTree = "<group>"; };
+		95B1B5C718B71AED00373DD7 /* ACEditorAlarmVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ACEditorAlarmVC.xib; sourceTree = "<group>"; };
+		95B1B5C818B71AED00373DD7 /* ACMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACMainViewController.h; sourceTree = "<group>"; };
+		95B1B5C918B71AED00373DD7 /* ACMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACMainViewController.m; sourceTree = "<group>"; };
+		95B1B5CA18B71AED00373DD7 /* ACMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ACMainViewController.xib; sourceTree = "<group>"; };
+		95B1B5CB18B71AED00373DD7 /* ACSetAlarmVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACSetAlarmVC.h; sourceTree = "<group>"; };
+		95B1B5CC18B71AED00373DD7 /* ACSetAlarmVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACSetAlarmVC.m; sourceTree = "<group>"; };
+		95B1B5CD18B71AED00373DD7 /* ACSetAlarmVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ACSetAlarmVC.xib; sourceTree = "<group>"; };
 		CE580AB718B59422002B9E84 /* AlarmClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmClock.h; sourceTree = "<group>"; };
 		CE580AB818B59422002B9E84 /* AlarmClock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmClock.m; sourceTree = "<group>"; };
-		CE580ABA18B59D2E002B9E84 /* ACCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACCommon.h; sourceTree = "<group>"; };
-		CE580ABB18B59D2E002B9E84 /* ACCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACCommon.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,27 +163,13 @@
 		07371DB918AB0C6F004A23E5 /* AlarmClock */ = {
 			isa = PBXGroup;
 			children = (
-				CE580ABA18B59D2E002B9E84 /* ACCommon.h */,
-				CE580ABB18B59D2E002B9E84 /* ACCommon.m */,
-				07371DC218AB0C6F004A23E5 /* ACAppDelegate.h */,
-				07371DC318AB0C6F004A23E5 /* ACAppDelegate.m */,
-				07371DE218AB0CF6004A23E5 /* ACMainViewController.h */,
-				07371DE318AB0CF6004A23E5 /* ACMainViewController.m */,
-				07371DE418AB0CF6004A23E5 /* ACMainViewController.xib */,
-				0606B03618ABB97000E3D5A3 /* ACSetAlarmVC.h */,
-				0606B03718ABB97000E3D5A3 /* ACSetAlarmVC.m */,
-				0606B03818ABB97000E3D5A3 /* ACSetAlarmVC.xib */,
-				0746A93318ACCFA1007DC6F4 /* ACEditorAlarmVC.h */,
-				0746A93418ACCFA1007DC6F4 /* ACEditorAlarmVC.m */,
-				0746A93518ACCFA1007DC6F4 /* ACEditorAlarmVC.xib */,
-				078F2C9A18ADE5B100EC3036 /* ACButtomView.h */,
-				078F2C9B18ADE5B100EC3036 /* ACButtomView.m */,
-				0746A92E18ACC79C007DC6F4 /* ACAlarmTableCell.h */,
-				0746A92F18ACC79C007DC6F4 /* ACAlarmTableCell.m */,
-				0746A93118ACC7B5007DC6F4 /* ACAlarmTableCell.xib */,
 				CE580AB718B59422002B9E84 /* AlarmClock.h */,
 				CE580AB818B59422002B9E84 /* AlarmClock.m */,
 				078F2CE118AE093200EC3036 /* AlarmClock.xcdatamodeld */,
+				07371DC218AB0C6F004A23E5 /* ACAppDelegate.h */,
+				07371DC318AB0C6F004A23E5 /* ACAppDelegate.m */,
+				95B1B5B218B71A5900373DD7 /* controller */,
+				95B1B5B118B71A4800373DD7 /* model */,
 				07371DC518AB0C6F004A23E5 /* Images.xcassets */,
 				07371DBA18AB0C6F004A23E5 /* Supporting Files */,
 			);
@@ -231,6 +220,38 @@
 				07371DF218AB130D004A23E5 /* Icon@2x.png */,
 			);
 			path = icons;
+			sourceTree = "<group>";
+		};
+		95B1B5B118B71A4800373DD7 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				95B1B5B518B71A9900373DD7 /* ACCommon.h */,
+				95B1B5B618B71A9900373DD7 /* ACCommon.m */,
+				95B1B5B718B71A9900373DD7 /* ACCoreDataManager.h */,
+				95B1B5B818B71A9900373DD7 /* ACCoreDataManager.m */,
+				95B1B5B318B71A9900373DD7 /* ACButtomView.h */,
+				95B1B5B418B71A9900373DD7 /* ACButtomView.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		95B1B5B218B71A5900373DD7 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				95B1B5C218B71AED00373DD7 /* ACAlarmTableCell.h */,
+				95B1B5C318B71AED00373DD7 /* ACAlarmTableCell.m */,
+				95B1B5C418B71AED00373DD7 /* ACAlarmTableCell.xib */,
+				95B1B5C518B71AED00373DD7 /* ACEditorAlarmVC.h */,
+				95B1B5C618B71AED00373DD7 /* ACEditorAlarmVC.m */,
+				95B1B5C718B71AED00373DD7 /* ACEditorAlarmVC.xib */,
+				95B1B5C818B71AED00373DD7 /* ACMainViewController.h */,
+				95B1B5C918B71AED00373DD7 /* ACMainViewController.m */,
+				95B1B5CA18B71AED00373DD7 /* ACMainViewController.xib */,
+				95B1B5CB18B71AED00373DD7 /* ACSetAlarmVC.h */,
+				95B1B5CC18B71AED00373DD7 /* ACSetAlarmVC.m */,
+				95B1B5CD18B71AED00373DD7 /* ACSetAlarmVC.xib */,
+			);
+			path = controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,7 +330,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07371DE618AB0CF6004A23E5 /* ACMainViewController.xib in Resources */,
+				95B1B5D118B71AED00373DD7 /* ACEditorAlarmVC.xib in Resources */,
 				07371DFB18AB130D004A23E5 /* Icon@2x.png in Resources */,
 				07371DBE18AB0C6F004A23E5 /* InfoPlist.strings in Resources */,
 				07371DF318AB130D004A23E5 /* 1024.png in Resources */,
@@ -317,13 +338,13 @@
 				07371DC618AB0C6F004A23E5 /* Images.xcassets in Resources */,
 				07371DF718AB130D004A23E5 /* Icon-80.png in Resources */,
 				07371DF618AB130D004A23E5 /* Icon-57.png in Resources */,
-				0746A93218ACC7B5007DC6F4 /* ACAlarmTableCell.xib in Resources */,
+				95B1B5D518B71AED00373DD7 /* ACSetAlarmVC.xib in Resources */,
 				07371DF518AB130D004A23E5 /* Icon-120.png in Resources */,
 				07371DFA18AB130D004A23E5 /* Icon.png in Resources */,
 				07371DF418AB130D004A23E5 /* 128.png in Resources */,
-				0746A93718ACCFA1007DC6F4 /* ACEditorAlarmVC.xib in Resources */,
+				95B1B5CF18B71AED00373DD7 /* ACAlarmTableCell.xib in Resources */,
 				07371DF818AB130D004A23E5 /* Icon-Small.png in Resources */,
-				0606B03A18ABB97000E3D5A3 /* ACSetAlarmVC.xib in Resources */,
+				95B1B5D318B71AED00373DD7 /* ACMainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,15 +364,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				078F2CE318AE093200EC3036 /* AlarmClock.xcdatamodeld in Sources */,
-				0746A93018ACC79C007DC6F4 /* ACAlarmTableCell.m in Sources */,
-				07371DE518AB0CF6004A23E5 /* ACMainViewController.m in Sources */,
 				07371DC418AB0C6F004A23E5 /* ACAppDelegate.m in Sources */,
-				078F2C9C18ADE5B200EC3036 /* ACButtomView.m in Sources */,
 				07371DC018AB0C6F004A23E5 /* main.m in Sources */,
-				CE580ABC18B59D2E002B9E84 /* ACCommon.m in Sources */,
-				0606B03918ABB97000E3D5A3 /* ACSetAlarmVC.m in Sources */,
+				95B1B5BE18B71A9900373DD7 /* ACCommon.m in Sources */,
+				95B1B5BF18B71A9900373DD7 /* ACCoreDataManager.m in Sources */,
 				CE580AB918B59422002B9E84 /* AlarmClock.m in Sources */,
-				0746A93618ACCFA1007DC6F4 /* ACEditorAlarmVC.m in Sources */,
+				95B1B5D418B71AED00373DD7 /* ACSetAlarmVC.m in Sources */,
+				95B1B5CE18B71AED00373DD7 /* ACAlarmTableCell.m in Sources */,
+				95B1B5D218B71AED00373DD7 /* ACMainViewController.m in Sources */,
+				95B1B5BD18B71A9900373DD7 /* ACButtomView.m in Sources */,
+				95B1B5D018B71AED00373DD7 /* ACEditorAlarmVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
