@@ -46,6 +46,7 @@
     // set data
     [self setDataMethod];
     [ACCommon startLocationNotification:@{Location_Notification_ID:@"yangge"}];
+    [self.centerScrollView setContentSize:CGSizeMake(320, 900)];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

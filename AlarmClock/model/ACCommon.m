@@ -72,24 +72,24 @@
     // location notification
     UILocalNotification *notification = [[UILocalNotification alloc] init];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"HH:mm"];
+    [formatter setDateFormat:@"HH:mm:ss"];
     // notification fire time
-    NSDate *now = [formatter dateFromString:@"17:30"];
-    notification.fireDate = now;
+    //NSDate *now = [formatter dateFromString:@"15:30"];
+    notification.fireDate = [[NSDate date] dateByAddingTimeInterval:15];
     // notification timezone
     notification.timeZone = [NSTimeZone defaultTimeZone];
     // notification repeatInterval
     notification.repeatInterval = NSCalendarUnitWeekday;
     // notification alert title
-    notification.alertBody = @"这是一个新的通知";
-    // notification soundinfo
-    notification.soundName = UILocalNotificationDefaultSoundName;
+    notification.alertBody = @"还不起床？速度！";
+    // notification soundinfo UILocalNotificationDefaultSoundName
+    notification.soundName = nil;
     // notification userinfo
     NSDictionary *dic = @{@"key":@"name",Location_Notification_ID:[dicData objectForKey:Location_Notification_ID]};
     notification.userInfo = dic;
     // notification actions
     notification.hasAction = YES;
-    notification.alertAction = @"sstttss";
+    notification.alertAction = @"歇5分钟";
     // notification start
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
     
